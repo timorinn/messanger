@@ -1,7 +1,7 @@
-package com.tim.messenger.service;
+package com.tim.user_service.service;
 
-import com.tim.messenger.entity.User;
-import com.tim.messenger.repository.UserRepository;
+import com.tim.user_service.entity.User;
+import com.tim.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

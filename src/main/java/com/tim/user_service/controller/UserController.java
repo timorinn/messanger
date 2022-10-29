@@ -1,6 +1,7 @@
-package com.tim.messenger.controller;
+package com.tim.user_service.controller;
 
-import com.tim.messenger.service.UserService;
+import com.tim.user_service.entity.User;
+import com.tim.user_service.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/getUser/{id}")
-    public ResponseEntity getUser(@PathVariable(value = "id", required = true) UUID id) {
+    public ResponseEntity<User> getUser(@PathVariable(value = "id", required = true) UUID id) {
         return ResponseEntity.ok(userService.getUserById(id));
     }
 }

@@ -1,4 +1,4 @@
-package com.tim.messenger.entity;
+package com.tim.user_service.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.UUID;
 
 @Entity()
-@Table(name = "USER", schema = "PUBLIC")
+@Table(name = "USER")
 @Getter @Setter
 public class User {
     @Id

@@ -5,5 +5,12 @@ spring:
     password: 18428102
     driver-class-name: org.postgresql.Driver
 
+  jpa:
+    properties:
+      hibernate:
+        default_schema: user_service
+
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
+    default-schema: user_service
+    liquibase-schema: user_service

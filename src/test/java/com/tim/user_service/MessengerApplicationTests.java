@@ -1,4 +1,4 @@
-package com.tim.messenger;
+package com.tim.user_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

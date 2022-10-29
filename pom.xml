@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.tim</groupId>
-	<artifactId>messenger</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>messenger</name>
-	<description>Demo project for Spring Boot</description>
+	<description>User service</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -31,6 +31,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+<!--			<version>2.9.2</version>-->
 		</dependency>
 
 		<dependency>
