@@ -14,3 +14,7 @@ spring:
     change-log: classpath:db/changelog/db.changelog-master.xml
     default-schema: user_service
     liquibase-schema: user_service
+
+server:
+  error:
+    include-message: always
