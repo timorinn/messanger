@@ -6,6 +6,7 @@ import com.tim.user_service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -18,8 +19,23 @@ public class UserService {
     
     private final UserRepository userRepository;
 
+    @Transactional(readOnly = true)
     public User getUserById(UUID id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException(format("User with id %s not found.", id)));
+    }
+
+    @Transactional()
+    public User addUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Transactional
+    public User updateUser(User user) {
+        User userEntity = userRepository.findById(user.getId()).orElseThrow(
+                () -> new UserNotFoundException(format("User with id %s not found.", user.getId())));
+        userEntity.setName(user.getName());
+        userEntity = userRepository.save(userEntity);
+        return userEntity;
     }
 }

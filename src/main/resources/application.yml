@@ -4,6 +4,7 @@ spring:
     username: nikitatimorin
     password: 18428102
     driver-class-name: org.postgresql.Driver
+    initialization-mode: always
 
   jpa:
     properties:
@@ -12,8 +13,8 @@ spring:
 
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
-    default-schema: user_service
-    liquibase-schema: user_service
+    default-schema: USER_SERVICE
+    liquibase-schema: USER_SERVICE
 
 server:
   error:
