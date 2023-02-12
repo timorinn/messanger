@@ -16,7 +16,7 @@ import java.util.UUID;
 @MappedSuperclass
 @EntityListeners({AuditingEntityListener.class})
 @Getter @Setter
-public class BaseEntity {
+public abstract class BaseEntity {
 
     @Id
     @Column(name = "id", nullable = false)
