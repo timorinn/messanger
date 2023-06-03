@@ -9,7 +9,6 @@ import java.time.ZonedDateTime;
 import java.util.Optional;
 
 /** Used for last modified date setting. */
-
 @Configuration
 @EnableJpaAuditing(dateTimeProviderRef = "auditingDateTimeProvider")
 public class PersistConfiguration {
