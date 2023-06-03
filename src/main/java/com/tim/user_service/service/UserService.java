@@ -17,31 +17,31 @@ import static java.lang.String.format;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-    
-    private final UserRepository userRepository;
 
-    @Transactional(readOnly = true)
-    public User getUserById(UUID id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException(format("User with id %s not found.", id)));
-    }
+  private final UserRepository userRepository;
 
-    @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+  @Transactional(readOnly = true)
+  public User getUserById(UUID id) {
+    return userRepository.findById(id)
+            .orElseThrow(() -> new UserNotFoundException(format("User with id %s not found.", id)));
+  }
 
-    @Transactional()
-    public User addUser(User user) {
-        return userRepository.save(user);
-    }
+  @Transactional(readOnly = true)
+  public List<User> getAllUsers() {
+    return userRepository.findAll();
+  }
 
-    @Transactional
-    public User updateUser(User user) {
-        User userEntity = userRepository.findById(user.getId()).orElseThrow(
-                () -> new UserNotFoundException(format("User with id %s not found.", user.getId())));
-        userEntity.setName(user.getName());
-        userEntity = userRepository.save(userEntity);
-        return userEntity;
-    }
+  @Transactional()
+  public User addUser(User user) {
+    return userRepository.save(user);
+  }
+
+  @Transactional
+  public User updateUser(User user) {
+    User userEntity = userRepository.findById(user.getId()).orElseThrow(
+            () -> new UserNotFoundException(format("User with id %s not found.", user.getId())));
+    userEntity.setName(user.getName());
+    userEntity = userRepository.save(userEntity);
+    return userEntity;
+  }
 }

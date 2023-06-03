@@ -12,6 +12,6 @@ import javax.persistence.Table;
 @Getter @Setter
 public class User extends BaseEntity {
 
-    @Column(name = "name")
-    private String name;
+  @Column(name = "name")
+  private String name;
 }

@@ -13,8 +13,8 @@ import java.util.Optional;
 @EnableJpaAuditing(dateTimeProviderRef = "auditingDateTimeProvider")
 public class PersistConfiguration {
 
-    @Bean
-    public DateTimeProvider auditingDateTimeProvider() {
-        return () -> Optional.of(ZonedDateTime.now());
-    }
+  @Bean
+  public DateTimeProvider auditingDateTimeProvider() {
+    return () -> Optional.of(ZonedDateTime.now());
+  }
 }

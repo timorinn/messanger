@@ -18,14 +18,14 @@ import java.util.UUID;
 @Getter @Setter
 public abstract class BaseEntity {
 
-    @Id
-    @Column(name = "id", nullable = false)
-    private UUID id;
+  @Id
+  @Column(name = "id", nullable = false)
+  private UUID id;
 
-    @Version
-    private int version;
+  @Version
+  private int version;
 
-    @LastModifiedDate
-    @Column(name = "last_modified_date")
-    private OffsetDateTime lastModifiedDate;
+  @LastModifiedDate
+  @Column(name = "last_modified_date")
+  private OffsetDateTime lastModifiedDate;
 }
