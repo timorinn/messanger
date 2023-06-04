@@ -21,29 +21,29 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Import(UserService.class)
 class UserServiceIntegrationTest {
 
-    @Autowired UserRepository userRepository;
-    @Autowired UserService userService;
+  @Autowired UserRepository userRepository;
+  @Autowired UserService userService;
 
-    UUID userId = UUID.randomUUID();
+  UUID userId = UUID.randomUUID();
 
-    @BeforeEach
-    public void setup() {
-        User user = new User();
-        user.setName("Nick");
-        user.setId(userId);
-        userRepository.save(user);
-    }
+  @BeforeEach
+  public void setup() {
+    User user = new User();
+    user.setName("Nick");
+    user.setId(userId);
+    userRepository.save(user);
+  }
 
-    @Test
-    public void getUser_ok() {
-        userService.getUserById(userId);
-    }
+  @Test
+  public void getUser_ok() {
+    userService.getUserById(userId);
+  }
 
-    @Test
-    public void getUser_userNotExists_exception() {
-        UUID randomId = UUID.randomUUID();
-        UserNotFoundException userNotFoundException = assertThrows(UserNotFoundException.class, () -> userService.getUserById(randomId));
+  @Test
+  public void getUser_userNotExists_exception() {
+    UUID randomId = UUID.randomUUID();
+    UserNotFoundException userNotFoundException = assertThrows(UserNotFoundException.class, () -> userService.getUserById(randomId));
 
-        assertEquals(format("User with id %s not found.", randomId), userNotFoundException.getMessage());
-    }
+    assertEquals(format("User with id %s not found.", randomId), userNotFoundException.getMessage());
+  }
 }

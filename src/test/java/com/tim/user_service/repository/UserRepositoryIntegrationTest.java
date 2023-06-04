@@ -16,53 +16,53 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ActiveProfiles("test")
 class UserRepositoryIntegrationTest {
 
-    @Autowired UserRepository userRepository;
+  @Autowired UserRepository userRepository;
 
-    UUID firstUserId = UUID.randomUUID();
-    UUID secondUserId = UUID.randomUUID();
+  UUID firstUserId = UUID.randomUUID();
+  UUID secondUserId = UUID.randomUUID();
 
-    @BeforeEach
-    public void setup() {
-        User firstUser = new User();
-        firstUser.setName("Nick");
-        firstUser.setId(firstUserId);
-        userRepository.save(firstUser);
+  @BeforeEach
+  public void setup() {
+    User firstUser = new User();
+    firstUser.setName("Nick");
+    firstUser.setId(firstUserId);
+    userRepository.save(firstUser);
 
-        User secondUser = new User();
-        secondUser.setId(secondUserId);
-        secondUser.setName("Kek");
-        userRepository.save(secondUser);
-    }
+    User secondUser = new User();
+    secondUser.setId(secondUserId);
+    secondUser.setName("Kek");
+    userRepository.save(secondUser);
+  }
 
-    @Test
-    public void userRepository_count() {
-        long count = userRepository.count();
+  @Test
+  public void userRepository_count() {
+    long count = userRepository.count();
 
-        assertEquals(2, count);
-    }
+    assertEquals(2, count);
+  }
 
-    @Test
-    public void userRepository_findById() {
-        User firstUser = userRepository.findById(firstUserId).get();
-        User secondUser = userRepository.findById(secondUserId).get();
+  @Test
+  public void userRepository_findById() {
+    User firstUser = userRepository.findById(firstUserId).get();
+    User secondUser = userRepository.findById(secondUserId).get();
 
-        assertEquals("Nick", firstUser.getName());
-        assertEquals(firstUserId, firstUser.getId());
-        assertEquals(0, firstUser.getVersion());
+    assertEquals("Nick", firstUser.getName());
+    assertEquals(firstUserId, firstUser.getId());
+    assertEquals(0, firstUser.getVersion());
 
-        assertEquals("Kek", secondUser.getName());
-        assertEquals(secondUserId, secondUser.getId());
-        assertEquals(0, secondUser.getVersion());
-    }
+    assertEquals("Kek", secondUser.getName());
+    assertEquals(secondUserId, secondUser.getId());
+    assertEquals(0, secondUser.getVersion());
+  }
 
-    @Test
-    public void userRepository_update() {
-        User user = userRepository.findById(firstUserId).get();
-        user.setName("Nickitochka");
-        userRepository.saveAndFlush(user);
+  @Test
+  public void userRepository_update() {
+    User user = userRepository.findById(firstUserId).get();
+    user.setName("Nickitochka");
+    userRepository.saveAndFlush(user);
 
-        User updatedUser = userRepository.findById(firstUserId).get();
-        assertEquals("Nickitochka", updatedUser.getName());
-        assertEquals(1, updatedUser.getVersion());
-    }
+    User updatedUser = userRepository.findById(firstUserId).get();
+    assertEquals("Nickitochka", updatedUser.getName());
+    assertEquals(1, updatedUser.getVersion());
+  }
 }
